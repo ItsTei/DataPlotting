@@ -3,13 +3,7 @@
 
 file_path <- "household_power_consumption.txt"
 
-power <- read.table(
-  file_path,
-  header = TRUE,
-  sep = ";",
-  stringsAsFactors = FALSE,
-  na.strings = "?"
-)
+power <- read.table( file_path, header = TRUE, sep = ";", stringsAsFactors = FALSE, na.strings = "?")
 
 # Subset for the required two dates
 power_sub <- subset(power, Date == "1/2/2007" | Date == "2/2/2007")
@@ -19,11 +13,6 @@ power_sub$Global_active_power <- as.numeric(power_sub$Global_active_power)
 
 png("plot1.png", width = 480, height = 480)
 
-hist(
-  power_sub$Global_active_power,
-  col = "red",
-  main = "Global Active Power",
-  xlab = "Global Active Power (kilowatts)"
-)
+hist( power_sub$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
 
 dev.off()
